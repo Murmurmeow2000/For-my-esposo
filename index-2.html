@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Anderson</title>
+<style>
+body{
+margin:0;overflow:hidden;height:100vh;
+background:linear-gradient(180deg,#08111f,#14233b,#0b1220);
+font-family:Georgia,serif;color:white;
+display:flex;align-items:center;justify-content:center;
+}
+.container{text-align:center;z-index:2;max-width:800px;padding:20px;}
+h1{font-size:2.2rem;text-shadow:0 0 15px rgba(255,255,255,.5);}
+p{font-size:1.2rem;opacity:.95}
+.floating{
+position:absolute;font-size:28px;
+animation: float linear infinite;
+opacity:.85;
+}
+@keyframes float{
+from{transform:translateY(110vh) rotate(0deg);}
+to{transform:translateY(-120px) rotate(360deg);}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>I love you, my Anderson, more than anything. ❤️</h1>
+<p>You are my favorite melody in the universe. 🎶✨</p>
+</div>
+
+<script>
+const symbols=["🎸","🎵","🎶","⭐","🦋","❤️","✨"];
+for(let i=0;i<45;i++){
+ const el=document.createElement("div");
+ el.className="floating";
+ el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+ el.style.left=Math.random()*100+"vw";
+ el.style.animationDuration=(8+Math.random()*12)+"s";
+ el.style.animationDelay=(-Math.random()*15)+"s";
+ document.body.appendChild(el);
+}
+</script>
+</body>
+</html>
