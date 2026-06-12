@@ -6,6 +6,7 @@
 <title>For Anderson</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -20,9 +21,9 @@ justify-content:center;
 align-items:center;
 font-family:Georgia, serif;
 background:
-radial-gradient(circle at top,#4b1e7a 0%,#130824 35%,#050814 100%);
-position:relative;
+radial-gradient(circle at top,#3b0a73 0%,#120028 35%,#04020d 100%);
 color:white;
+position:relative;
 }
 
 .stars{
@@ -33,108 +34,84 @@ background-image:
 radial-gradient(white 1px, transparent 1px);
 background-size:40px 40px;
 opacity:.35;
-animation:twinkle 6s infinite alternate;
+animation: twinkle 6s ease-in-out infinite;
 }
 
 @keyframes twinkle{
-from{opacity:.2;}
-to{opacity:.5;}
+50%{opacity:.7;}
 }
 
-.content{
-position:relative;
-z-index:5;
+.container{
 text-align:center;
-max-width:850px;
-padding:30px;
-animation:fadeIn 3s ease;
+padding:20px;
+z-index:2;
+max-width:90%;
+animation: fadeIn 2s ease forwards;
 }
 
 h1{
-font-size:3rem;
-line-height:1.2;
+font-size:4rem;
+line-height:1.1;
+opacity:0;
+transform:translateY(40px);
+animation:titleAppear 2.5s ease forwards;
 text-shadow:
-0 0 15px rgba(255,255,255,.7),
-0 0 35px rgba(180,120,255,.5);
+0 0 12px rgba(255,255,255,.6),
+0 0 25px rgba(170,120,255,.7);
 }
 
-p{
-margin-top:25px;
-font-size:1.8rem;
-color:#f0c8ff;
+.subtitle{
+margin-top:35px;
+font-size:2rem;
 font-style:italic;
-text-shadow:0 0 12px rgba(255,150,255,.5);
-}
-
-@keyframes fadeIn{
-from{
+color:#f0d7ff;
 opacity:0;
 transform:translateY(30px);
+animation:titleAppear 2.5s ease forwards;
+animation-delay:1.2s;
+text-shadow:0 0 15px rgba(210,140,255,.6);
 }
+
+@keyframes titleAppear{
 to{
 opacity:1;
 transform:translateY(0);
 }
 }
 
-.guitar{
-position:absolute;
-left:3%;
-bottom:5%;
-font-size:150px;
-opacity:.9;
-filter:drop-shadow(0 0 20px #a855ff);
-animation:float 6s ease-in-out infinite;
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
 }
 
-.music{
+.floating{
 position:absolute;
-right:5%;
-top:15%;
-font-size:45px;
-color:#d7a6ff;
-animation:rise 12s linear infinite;
-}
-
-@keyframes rise{
-from{transform:translateY(500px);}
-to{transform:translateY(-700px);}
+font-size:34px;
+animation:float linear infinite;
+opacity:.85;
 }
 
 @keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-15px);}
+from{
+transform:translateY(110vh) rotate(0deg);
+}
+to{
+transform:translateY(-120px) rotate(360deg);
+}
 }
 
-.butterfly{
+.corner{
 position:absolute;
-font-size:40px;
-animation:float 7s ease-in-out infinite;
+font-size:38px;
+color:#dca8ff;
+opacity:.8;
 }
 
-.b1{top:18%;left:18%;}
-.b2{top:70%;right:18%;}
-.b3{top:35%;right:10%;}
+.top-left{top:15px;left:15px;}
+.top-right{top:15px;right:15px;}
+.bottom-left{bottom:15px;left:15px;}
+.bottom-right{bottom:15px;right:15px;}
 
-.heart{
-position:absolute;
-font-size:28px;
-color:#ff9adf;
-opacity:.7;
-}
-
-.h1{top:15%;right:25%;}
-.h2{bottom:20%;left:25%;}
-.h3{top:55%;left:12%;}
-
-.candle{
-position:absolute;
-bottom:15px;
-left:50%;
-transform:translateX(-50%);
-font-size:42px;
-opacity:.9;
-}
 </style>
 </head>
 
@@ -142,31 +119,48 @@ opacity:.9;
 
 <div class="stars"></div>
 
-<div class="guitar">🎸</div>
+<div class="corner top-left">✦</div>
+<div class="corner top-right">✦</div>
+<div class="corner bottom-left">✦</div>
+<div class="corner bottom-right">✦</div>
 
-<div class="music">🎵 🎶 🎵 🎶 🎵</div>
-
-<div class="butterfly b1">🦋</div>
-<div class="butterfly b2">🦋</div>
-<div class="butterfly b3">🦋</div>
-
-<div class="heart h1">♡</div>
-<div class="heart h2">♡</div>
-<div class="heart h3">♡</div>
-
-<div class="content">
+<div class="container">
 <h1>
 I love you,<br>
 my Anderson,<br>
-more than anything.
+more than<br>
+anything.
 </h1>
 
-<p>
+<div class="subtitle">
 You are my favorite melody in the universe.
-</p>
+</div>
 </div>
 
-<div class="candle">🕯️ 🕯️</div>
+<script>
+
+const symbols = [
+"🦋","💜","✨","🎼","🎵","🎶","⭐","🌙","🕯️"
+];
+
+for(let i=0;i<35;i++){
+
+const el=document.createElement("div");
+el.className="floating";
+
+el.textContent=symbols[
+Math.floor(Math.random()*symbols.length)
+];
+
+el.style.left=Math.random()*100+"vw";
+el.style.animationDuration=(10+Math.random()*12)+"s";
+el.style.animationDelay=(-Math.random()*15)+"s";
+
+document.body.appendChild(el);
+
+}
+
+</script>
 
 </body>
 </html>
